@@ -22,6 +22,11 @@ def load_data_dict():
     data_dict['avg'] = data_dict['sales'].groupby('date').mean()
 
     data_dict['test'] = pd.read_csv('data_season/test.csv')
+    data_dict['test'] = data_dict['test'].set_index('date')
+    data_dict['test'] = data_dict['test'].set_index(['store_nbr', 'family'], append=True)  
+
+    data_dict['test_avg'] = data_dict['test'].groupby('date').mean()
+
     return data_dict
 
 
